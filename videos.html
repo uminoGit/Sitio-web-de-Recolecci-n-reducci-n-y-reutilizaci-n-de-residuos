@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videos Educativos | EcoHogar</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Galería de Videos */
+#video-gallery {
+    padding: 60px 20px;
+    background-color: #f8f9fa;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.video-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.video-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.video-info {
+    padding: 24px;
+}
+
+.video-info h3 {
+    font-size: 1.25em;
+    margin-bottom: 12px;
+    color: #1a5f37;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.video-info p {
+    font-size: 1rem;
+    color: #4a5568;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.video-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.video-tag {
+    background-color: #e6f4ea;
+    color: #1a5f37;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.video-tag:hover {
+    background-color: #c8e6d2;
+    transform: scale(1.05);
+}
+
+/* Estilos para los filtros de categoría */
+#video-categories {
+    padding: 40px 0;
+    text-align: center;
+}
+
+#video-categories h2 {
+    margin-bottom: 30px;
+    color: #1a5f37;
+    font-size: 2em;
+}
+
+.category-filter {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.category-btn {
+    background-color: #f8f9fa;
+    border: 2px solid #e9ecef;
+    color: #495057;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.category-btn:hover {
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
+
+.category-btn.active {
+    background-color: #2e8b57;
+    border-color: #2e8b57;
+    color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .video-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        padding: 0 15px;
+    }
+
+    .video-info {
+        padding: 20px;
+    }
+
+    .category-filter {
+        padding: 0 15px;
+    }
+
+    .category-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.video-card {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span class="highlight">Eco</span>Hogar</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="registro.html">Registro</a></li>
+                    <li><a href="login.html">Iniciar Sesión</a></li>
+                    <li><a href="articulos.html">Artículos</a></li>
+                    <li class="current"><a href="videos.html">Videos</a></li>
+                    <li><a href="foros.html">Foros</a></li>
+                    <li><a href="descargas.html">Descargas</a></li>
+                    <li><a href="buenas-practicas.html">Buenas Prácticas</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Aprende con nuestros videos educativos</h1>
+            <p>Tutoriales, consejos prácticos y guías visuales para una mejor gestión de residuos</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <section id="video-categories">
+            <h2>Explora por categorías</h2>
+            <div class="category-filter">
+                <button class="category-btn active" data-category="all">Todos</button>
+                <button class="category-btn" data-category="reducir">Reducir</button>
+                <button class="category-btn" data-category="reutilizar">Reutilizar</button>
+                <button class="category-btn" data-category="reciclar">Reciclar</button>
+                <button class="category-btn" data-category="compostaje">Compostaje</button>
+                <button class="category-btn" data-category="manualidades">Manualidades</button>
+            </div>
+        </section>
+
+       <section id="video-gallery">
+  <div class="video-grid">
+    <!-- Video 1: Cómo reducir residuos orgánicos en casa -->
+    <div class="video-card" data-categories="reducir compostaje">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/cIOkj7sMrPo" title="Cómo reducir residuos orgánicos en casa" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <h3>Cómo reducir residuos orgánicos en casa</h3>
+        <p>Aprende técnicas sencillas para minimizar tus desechos orgánicos y aprovecharlos mejor.</p>
+        <div class="video-tags">
+          <span class="video-tag">Reducir</span>
+          <span class="video-tag">Compostaje</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video 2: 5 ideas para reutilizar botellas plásticas -->
+    <div class="video-card" data-categories="reutilizar manualidades">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/WKqBscMcDSY" title="5 ideas para reutilizar botellas plásticas" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <h3>5 ideas para reutilizar botellas plásticas</h3>
+        <p>Transforma tus botellas de plástico en objetos útiles y decorativos para tu hogar.</p>
+        <div class="video-tags">
+          <span class="video-tag">Reutilizar</span>
+          <span class="video-tag">Manualidades</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video 3: Guía completa de reciclaje para principiantes -->
+    <div class="video-card" data-categories="reciclar">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/YiHTNfKJwAw" title="Guía completa de reciclaje para principiantes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <h3>Guía completa de reciclaje para principiantes</h3>
+        <p>Todo lo que necesitas saber para empezar a reciclar correctamente en casa.</p>
+        <div class="video-tags">
+          <span class="video-tag">Reciclar</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video 4: Cómo hacer compras sin generar residuos -->
+    <div class="video-card" data-categories="reducir">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/-Tkqtqa4RI8" title="Cómo hacer compras sin generar residuos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <h3>Cómo hacer compras sin generar residuos</h3>
+        <p>Consejos prácticos para reducir los desechos desde el momento de la compra.</p>
+        <div class="video-tags">
+          <span class="video-tag">Reducir</span>
+          <span class="video-tag">Consejos</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video 5: Compostaje en casa: paso a paso -->
+    <div class="video-card" data-categories="compostaje">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/zWk5yBQ68oA" title="Compostaje en casa: paso a paso" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <h3>Compostaje en casa: paso a paso</h3>
+        <p>Aprende a crear tu propio compost con los residuos orgánicos de tu hogar.</p>
+        <div class="video-tags">
+          <span class="video-tag">Compostaje</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video 6: Organizadores con materiales reciclados -->
+    <div class="video-card" data-categories="reutilizar manualidades">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/XQrD5iff4fA" title="Organizadores con materiales reciclados" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <h3>Organizadores con materiales reciclados</h3>
+        <p>Ideas creativas para crear organizadores funcionales con materiales que ibas a desechar.</p>
+        <div class="video-tags">
+          <span class="video-tag">Reutilizar</span>
+          <span class="video-tag">Manualidades</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h3>Sobre EcoHogar</h3>
+                <p>EcoHogar &copy; 2023 - Todos los derechos reservados</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>Email: info@ecohogar.com</p>
+                <p>Teléfono: +52 (55) 1234-5678</p>
+                <div class="social">
+                    <a href="#" class="social-icon" aria-label="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3 8h-1.35c-.538 0-.65.221-.65.778v1.222h2l-.209 2h-1.791v7h-3v-7h-2v-2h2v-2.308c0-1.769.931-2.692 3.029-2.692h1.971v3z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Twitter">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.066 9.645c.183 4.04-2.83 8.544-8.164 8.544-1.622 0-3.131-.476-4.402-1.291 1.524.18 3.045-.244 4.252-1.189-1.256-.023-2.317-.854-2.684-1.995.451.086.895.061 1.298-.049-1.381-.278-2.335-1.522-2.304-2.853.388.215.83.344 1.301.359-1.279-.855-1.641-2.544-.889-3.835 1.416 1.738 3.533 2.881 5.92 3.001-.419-1.796.944-3.527 2.799-3.527.825 0 1.572.349 2.096.907.654-.128 1.27-.368 1.824-.697-.215.671-.67 1.233-1.263 1.589.581-.07 1.135-.224 1.649-.453-.384.578-.87 1.084-1.433 1.489z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3.445 17.827c-1.139.007-2.277.015-3.416.015-1.139 0-2.277-.008-3.416-.015-1.363-.008-2.559-1.197-2.574-2.574-.008-1.139-.015-2.277-.015-3.416 0-1.139.007-2.277.015-3.416.015-1.377 1.211-2.566 2.574-2.574 1.139-.007 2.277-.015 3.416-.015 1.139 0 2.277.008 3.416.015 1.363.008 2.559 1.197 2.574 2.574.008 1.139.015 2.277.015 3.416 0 1.139-.007 2.277-.015 3.416-.015 1.377-1.211 2.566-2.574 2.574zm-3.445-11.327c-2.209 0-4 1.791-4 4s1.791 4 4 4 4-1.791 4-4-1.791-4-4-4zm0 6.667c-1.469 0-2.667-1.198-2.667-2.667 0-1.469 1.198-2.667 2.667-2.667 1.469 0 2.667 1.198 2.667 2.667 0 1.469-1.198 2.667-2.667 2.667zm4.333-7.333c-.533 0-.933.4-.933.933s.4.933.933.933.933-.4.933-.933-.4-.933-.933-.933z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Soporte Técnico</h3>
+                <p>Email: soporte@ecohogar.com</p>
+                <p>Teléfono: +52 (55) 8765-4321</p>
+                <p>Horario de atención:</p>
+                <ul class="support-hours">
+                    <li>Lunes a Viernes: 9:00 - 18:00</li>
+                    <li>Sábado: 9:00 - 13:00</li>
+                    <li>Domingo: Cerrado</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Reportar un Problema</h3>
+                <form id="technical-report-form">
+                    <div class="form-group">
+                        <select id="issue" class="form-control" required>
+                            <option value="">Seleccione el tipo de problema</option>
+                            <option value="error">Error en la página</option>
+                            <option value="functionality">Problema de funcionalidad</option>
+                            <option value="account">Problema con la cuenta</option>
+                            <option value="other">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="description" class="form-control" placeholder="Describa el problema" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="contact-email" class="form-control" placeholder="Email de contacto" required>
+                    </div>
+                    <div id="report-error" class="error-message" style="display: none;"></div>
+                    <div id="report-success" class="success-message" style="display: none;"></div>
+                    <button type="submit" class="btn-primary">Enviar Reporte</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        // Filtrado por categorías
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Actualizar botones activos
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                const category = this.dataset.category;
+                const videos = document.querySelectorAll('.video-card');
+                
+                videos.forEach(video => {
+                    if (category === 'all' || video.dataset.categories.includes(category)) {
+                        video.style.display = 'block';
+                    } else {
+                        video.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Lazy loading para iframes
+        document.addEventListener("DOMContentLoaded", function() {
+            const lazyVideos = [].slice.call(document.querySelectorAll("iframe[loading='lazy']"));
+            
+            if ("IntersectionObserver" in window) {
+                const lazyVideoObserver = new IntersectionObserver(function(entries, observer) {
+                    entries.forEach(function(video) {
+                        if (video.isIntersecting) {
+                            for (const source in video.target.children) {
+                                const videoSource = video.target.children[source];
+                                if (typeof videoSource.tagName === "string" && videoSource.tagName === "IFRAME") {
+                                    videoSource.src = videoSource.dataset.src;
+                                }
+                            }
+                            
+                            lazyVideoObserver.unobserve(video.target);
+                        }
+                    });
+                });
+                
+                lazyVideos.forEach(function(lazyVideo) {
+                    lazyVideoObserver.observe(lazyVideo);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

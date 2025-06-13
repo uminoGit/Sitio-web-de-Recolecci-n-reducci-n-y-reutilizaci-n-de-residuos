@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foros de Discusión - EcoHogar</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .btn-responder {
+            background: #2e8b57;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8em;
+            margin-left: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-responder:hover {
+            background: #1a5738;
+            transform: translateY(-1px);
+        }
+
+        .foro-container {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .categorias-foro {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .categorias-foro h3 {
+            color: #2e8b57;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .categorias-foro ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .categorias-foro li {
+            margin-bottom: 10px;
+        }
+        
+        .categorias-foro a {
+            color: #333;
+            text-decoration: none;
+        }
+        
+        .categorias-foro a:hover {
+            color: #2e8b57;
+            font-weight: bold;
+        }
+        
+        .temas-foro {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .tema {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .tema:last-child {
+            border-bottom: none;
+        }
+        
+        .tema h4 {
+            margin-bottom: 5px;
+            color: #2e8b57;
+        }
+        
+        .meta-tema {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        
+        .resumen-tema {
+            margin-bottom: 10px;
+        }
+        
+        .acciones-tema a {
+            color: #2e8b57;
+            text-decoration: none;
+            margin-right: 10px;
+            font-size: 0.9em;
+        }
+        
+        #formTema {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 5px;
+        }
+        
+        #nuevoTema {
+            background: #2e8b57;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        
+        #nuevoTema:hover {
+            background: #3cb371;
+        }
+        
+        #cancelarTema {
+            background: #ccc;
+            color: #333;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        
+        .comentarios {
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+        }
+        
+        .comentarios h5 {
+            margin-bottom: 10px;
+            color: #2e8b57;
+        }
+        
+        .lista-comentarios {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 10px 0;
+        }
+        
+        .lista-comentarios li {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .form-comentario {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .input-nombre, .input-comentario {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        .input-comentario {
+            resize: vertical;
+        }
+        
+        .form-comentario button {
+            align-self: flex-start;
+            background: #2e8b57;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8em;
+            transition: all 0.3s ease;
+        }
+        
+        .form-comentario button:hover {
+            background: #1a5738;
+            transform: translateY(-1px);
+        }
+        
+        .btn-responder {
+            background: #2e8b57;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8em;
+            margin-left: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-responder:hover {
+            background: #1a5738;
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span class="highlight">Eco</span>Hogar</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="registro.html">Registro</a></li>
+                    <li><a href="login.html">Iniciar Sesión</a></li>
+                    <li><a href="articulos.html">Artículos</a></li>
+                    <li><a href="videos.html">Videos</a></li>
+                    <li class="current"><a href="foros.html">Foros</a></li>
+                    <li><a href="buenas-practicas.html">Buenas Prácticas</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2>Foros de Discusión</h2>
+        <p>Comparte tus experiencias, haz preguntas y aprende de otros miembros de la comunidad EcoHogar.</p>
+        
+        <div class="foro-container">
+            <div class="categorias-foro">
+                <h3>Categorías</h3>
+                <ul>
+                    <li><a href="#" class="active">Todos los temas</a></li>
+                    <li><a href="#">Reducción de residuos</a></li>
+                    <li><a href="#">Recolección selectiva</a></li>
+                    <li><a href="#">Reutilización creativa</a></li>
+                    <li><a href="#">Compostaje</a></li>
+                    <li><a href="#">Dudas y preguntas</a></li>
+                </ul>
+            </div>
+            <div class="temas-foro">
+                <h3>Tema Destacado: Compostaje en Casa</h3>
+                <div class="tema">
+                    <h4><a href="#">Cómo empezar un compostero en casa</a></h4>
+                    <div class="meta-tema">Iniciado por <a href="#">Juan Pérez</a> - 10 comentarios - 2 días
+                        <button class="btn-responder">Responder</button>
+                    </div>
+                    <div class="resumen-tema">
+                        Aprenda los conceptos básicos del compostaje y cómo puede empezar su propio compostero en casa.
+                        <span class="leer-mas-foro" style="color:#2e8b57;cursor:pointer;text-decoration:underline;">Leer más</span>
+                        <div class="contenido-extra-foro" style="display:none;margin-top:10px;">
+                            <ul>
+                                <li>Elige un recipiente adecuado para tu espacio (balcón, patio, cocina).</li>
+                                <li>Agrega residuos orgánicos y material seco en capas.</li>
+                                <li>Remueve la mezcla cada semana para oxigenar.</li>
+                                <li>Evita agregar carnes, lácteos y aceites.</li>
+                                <li>En 2-3 meses tendrás abono natural para tus plantas.</li>
+                            </ul>
+                            <img src="img/foro-compostaje.jpg" alt="Compostero en casa" style="max-width:100%;margin:10px 0;">
+                            <p>Video recomendado:</p>
+                            <iframe width="100%" height="315" src="https://www.youtube.com/embed/3RcJ3Oqk5CQ" title="Video de YouTube" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="acciones-tema">
+                        <a href="#">Editar</a>
+                        <a href="#">Eliminar</a>
+                    </div>
+                    <!-- Sección de comentarios -->
+                    <div class="comentarios">
+                        <h5>Comentarios</h5>
+                        <ul class="lista-comentarios"></ul>
+                        <form class="form-comentario">
+                            <input type="text" class="input-nombre" placeholder="Tu nombre" required>
+                            <textarea class="input-comentario" placeholder="Escribe un comentario..." required></textarea>
+                            <button type="submit">Comentar</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="tema">
+                    <h4><a href="#">Beneficios del compostaje</a></h4>
+                    <div class="meta-tema">Iniciado por <a href="#">María López</a> - 5 comentarios - 3 días
+                        <button class="btn-responder">Responder</button>
+                    </div>
+                    <div class="resumen-tema">
+                        Descubre los múltiples beneficios de hacer compost en casa y cómo contribuye al cuidado del medio ambiente.
+                    </div>
+                    <div class="acciones-tema">
+                        <a href="#">Editar</a>
+                        <a href="#">Eliminar</a>
+                    </div>
+                    <!-- Sección de comentarios -->
+                    <div class="comentarios">
+                        <h5>Comentarios</h5>
+                        <ul class="lista-comentarios"></ul>
+                        <form class="form-comentario">
+                            <input type="text" class="input-nombre" placeholder="Tu nombre" required>
+                            <textarea class="input-comentario" placeholder="Escribe un comentario..." required></textarea>
+                            <button type="submit">Comentar</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="tema">
+                    <h4><a href="#">Errores comunes en el compostaje</a></h4>
+                    <div class="meta-tema">Iniciado por <a href="#">Carlos Ruiz</a> - 8 comentarios - 1 semana
+                        <button class="btn-responder">Responder</button>
+                    </div>
+                    <div class="resumen-tema">
+                        Evite los errores más comunes al iniciar su compostero y asegúrese de tener éxito en esta práctica ecológica.
+                    </div>
+                    <div class="acciones-tema">
+                        <a href="#">Editar</a>
+                        <a href="#">Eliminar</a>
+                    </div>
+                    <!-- Sección de comentarios -->
+                    <div class="comentarios">
+                        <h5>Comentarios</h5>
+                        <ul class="lista-comentarios"></ul>
+                        <form class="form-comentario">
+                            <input type="text" class="input-nombre" placeholder="Tu nombre" required>
+                            <textarea class="input-comentario" placeholder="Escribe un comentario..." required></textarea>
+                            <button type="submit">Comentar</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="tema">
+                    <h4><a href="#">Mi experiencia con el compostaje</a></h4>
+                    <div class="meta-tema">Iniciado por <a href="#">Ana García</a> - 12 comentarios - 2 semanas
+                        <button class="btn-responder">Responder</button>
+                    </div>
+                    <div class="resumen-tema">
+                        Comparta su experiencia personal con el compostaje, los desafíos que enfrentó y los beneficios que ha observado.
+                    </div>
+                    <div class="acciones-tema">
+                        <a href="#">Editar</a>
+                        <a href="#">Eliminar</a>
+                    </div>
+                    <!-- Sección de comentarios -->
+                    <div class="comentarios">
+                        <h5>Comentarios</h5>
+                        <ul class="lista-comentarios"></ul>
+                        <form class="form-comentario">
+                            <input type="text" class="input-nombre" placeholder="Tu nombre" required>
+                            <textarea class="input-comentario" placeholder="Escribe un comentario..." required></textarea>
+                            <button type="submit">Comentar</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <button id="formularioTemaBtn">Iniciar un nuevo tema</button>
+                
+                <div id="formTema">
+                    <h3>Iniciar un nuevo tema de discusión</h3>
+                    <form action="">
+                        <div>
+                            <label for="tituloTema">Título:</label>
+                            <input type="text" id="tituloTema" required>
+                        </div>
+                        <div>
+                            <label for="categoriaTema">Categoría:</label>
+                            <select id="categoriaTema" required>
+                                <option value="">Seleccione una categoría</option>
+                                <option value="reduccion-residuos">Reducción de residuos</option>
+                                <option value="recoleccion-selectiva">Recolección selectiva</option>
+                                <option value="reutilizacion-creativa">Reutilización creativa</option>
+                                <option value="compostaje">Compostaje</option>
+                                <option value="dudas-preguntas">Dudas y preguntas</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="descripcionTema">Descripción:</label>
+                            <textarea id="descripcionTema" rows="4" required></textarea>
+                        </div>
+                        <button type="submit">Crear tema</button>
+                        <button type="button" id="cancelarTema">Cancelar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 EcoHogar. Todos los derechos reservados.</p>
+            <div id="logout-container" style="margin-top:10px;"></div>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+    <script>
+    // Mostrar/ocultar contenido extra en 'Leer más' de foros
+    document.querySelectorAll('.leer-mas-foro').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const extra = this.nextElementSibling;
+            if (extra && extra.classList.contains('contenido-extra-foro')) {
+                if (extra.style.display === 'none' || extra.style.display === '') {
+                    extra.style.display = 'block';
+                    this.textContent = 'Leer menos';
+                } else {
+                    extra.style.display = 'none';
+                    this.textContent = 'Leer más';
+                }
+            }
+        });
+    });
+    </script>
+    <script>
+    (function(){
+        const usuario = (function(){
+            try { return JSON.parse(localStorage.getItem('currentUser')); } catch(e){ return null; }
+        })();
+        if(usuario && usuario.email){
+            const logoutDiv = document.getElementById('logout-container');
+            if (logoutDiv) {
+                logoutDiv.innerHTML = `<span style='margin-right:10px;'>Sesión iniciada como <b>${usuario.nombre || usuario.email.split('@')[0]}</b></span><button id='logout-btn' style='background:#e8491d;color:white;border:none;padding:6px 14px;border-radius:4px;cursor:pointer;'>Cerrar sesión</button>`;
+                document.getElementById('logout-btn').onclick = function(){
+                    localStorage.removeItem('currentUser');
+                    window.location.reload();
+                };
+            }
+        }
+    })();
+    </script>
+    <script>
+        document.getElementById('formularioTemaBtn').addEventListener('click', function() {
+            document.getElementById('formTema').style.display = 'block';
+        });
+        
+        document.getElementById('cancelarTema').addEventListener('click', function() {
+            document.getElementById('formTema').style.display = 'none';
+        });
+
+        // --- Comentarios persistentes por tema con usuario autenticado ---
+        function getUsuarioActual() {
+            try {
+                return JSON.parse(localStorage.getItem('currentUser'));
+            } catch (e) { return null; }
+        }
+
+        document.querySelectorAll('.tema').forEach(function(tema, idx) {
+            const comentariosKey = 'comentarios_tema_' + idx;
+            const lista = tema.querySelector('.lista-comentarios');
+            const form = tema.querySelector('.form-comentario');
+            const inputNombre = form.querySelector('.input-nombre');
+            // Si hay usuario logueado, autocompletar y deshabilitar el campo nombre
+            const usuario = getUsuarioActual();
+            if (usuario && usuario.email) {
+                inputNombre.value = usuario.email.split('@')[0];
+                inputNombre.readOnly = true;
+            } else {
+                inputNombre.value = '';
+                inputNombre.readOnly = false;
+            }
+
+            // Cargar comentarios guardados
+            function cargarComentarios() {
+                lista.innerHTML = '';
+                const comentarios = JSON.parse(localStorage.getItem(comentariosKey) || '[]');
+                comentarios.forEach(function(com) {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<div style='font-weight:bold;'>${com.nombre}</div><div>${com.texto}</div>`;
+                    lista.appendChild(li);
+                });
+            }
+            cargarComentarios();
+
+            // Guardar nuevo comentario
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                let nombre = form.querySelector('.input-nombre').value.trim();
+                const texto = form.querySelector('.input-comentario').value.trim();
+                if (!nombre || !texto) return;
+                // Si hay usuario logueado, usar su nombre/email
+                if (usuario && usuario.email) {
+                    nombre = usuario.email.split('@')[0];
+                }
+                const comentarios = JSON.parse(localStorage.getItem(comentariosKey) || '[]');
+                comentarios.push({ nombre, texto });
+                localStorage.setItem(comentariosKey, JSON.stringify(comentarios));
+                form.reset();
+                if (usuario && usuario.email) {
+                    inputNombre.value = usuario.email.split('@')[0];
+                }
+                cargarComentarios();
+            });
+        });
+
+        // --- Registro e inicio de sesión ---
+        // Registro
+        if (window.location.pathname.includes('registro.html')) {
+            const form = document.getElementById('registroForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const nombre = form.nombre.value.trim();
+                    const email = form.email.value.trim();
+                    const password = form.password.value;
+                    const confirmPassword = form.confirmPassword.value;
+                    if (!nombre || !email || !password || !confirmPassword) {
+                        alert('Completa todos los campos');
+                        return;
+                    }
+                    if (password !== confirmPassword) {
+                        alert('Las contraseñas no coinciden');
+                        return;
+                    }
+                    let users = JSON.parse(localStorage.getItem('users') || '[]');
+                    if (users.find(u => u.email === email)) {
+                        alert('El correo ya está registrado');
+                        return;
+                    }
+                    users.push({ nombre, email, password });
+                    localStorage.setItem('users', JSON.stringify(users));
+                    alert('Registro exitoso. Ahora puedes iniciar sesión.');
+                    window.location.href = 'login.html';
+                });
+            }
+        }
+        // Login
+        if (window.location.pathname.includes('login.html')) {
+            const form = document.getElementById('loginForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = form.email.value.trim();
+                    const password = form.password.value;
+                    let users = JSON.parse(localStorage.getItem('users') || '[]');
+                    const user = users.find(u => u.email === email && u.password === password);
+                    if (!user) {
+                        alert('Correo o contraseña incorrectos');
+                        return;
+                    }
+                    localStorage.setItem('currentUser', JSON.stringify(user));
+                    alert('Inicio de sesión exitoso');
+                    window.location.href = 'foros.html';
+                });
+            }
+        }
+    </script>
+</body>
+</html>

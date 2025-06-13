@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buenas Prácticas - EcoHogar</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .practica {
+            background: white;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .practica h3 {
+            color: #2e8b57;
+            margin-bottom: 10px;
+        }
+        
+        .practica img {
+            max-width: 100%;
+            height: auto;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        #calculadora {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span class="highlight">Eco</span>Hogar</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="registro.html">Registro</a></li>
+                    <li><a href="login.html">Iniciar Sesión</a></li>
+                    <li><a href="articulos.html">Artículos</a></li>
+                    <li><a href="videos.html">Videos</a></li>
+                    <li><a href="foros.html">Foros</a></li>
+                    <li><a href="descargas.html">Descargas</a></li>
+                    <li class="current"><a href="buenas-practicas.html">Buenas Prácticas</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="practicas">
+            <h2>Buenas Prácticas para el Manejo de Residuos en Casa</h2>
+            
+            <div class="practica">
+                <h3>1. Reducción en la fuente</h3>
+                <img src="img/reduccion.jpg" alt="Reducción de residuos">
+                <p>La mejor manera de manejar los residuos es no generarlos. Compra productos con menos empaque, elige productos reutilizables y evita los desechables.</p>
+                <button class="ver-mas" data-target="mas1">Ver más consejos</button>
+                <div id="mas1" class="consejos-adicionales" style="display: none;">
+                    <ul>
+                        <li>Usa bolsas de tela para las compras</li>
+                        <li>Prefiere productos a granel</li>
+                        <li>Evita los productos de un solo uso</li>
+                        <li>Planifica tus compras para evitar desperdicios</li>
+                        <li>Compra frutas y verduras sin bolsa ni envoltura</li>
+                        <li>Elige productos con envases retornables</li>
+                    </ul>
+                    <img src="img/reduccion-extra.jpg" alt="Reducción extra" style="max-width:100%;margin:10px 0;">
+                    <p>Video recomendado:</p>
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/3RcJ3Oqk5CQ" title="Video de YouTube" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            
+            <div class="practica">
+                <h3>2. Separación adecuada</h3>
+                <img src="img/separacion.jpg" alt="Separación de residuos">
+                <p>Establece un sistema de separación en tu hogar con al menos tres categorías: orgánicos, reciclables y no reciclables.</p>
+                <button class="ver-mas" data-target="mas2">Ver más consejos</button>
+                <div id="mas2" class="consejos-adicionales" style="display: none;">
+                    <ul>
+                        <li>Usa contenedores de diferentes colores</li>
+                        <li>Lava los envases reciclables antes de desecharlos</li>
+                        <li>Aplasta las botellas y latas para ahorrar espacio</li>
+                        <li>Investiga las normas de reciclaje en tu localidad</li>
+                        <li>Coloca carteles para que todos en casa sepan separar</li>
+                    </ul>
+                    <img src="img/separacion-extra.jpg" alt="Separación extra" style="max-width:100%;margin:10px 0;">
+                    <p>Video explicativo:</p>
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/3RcJ3Oqk5CQ" title="Video de YouTube" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            
+            <div class="practica">
+                <h3>3. Compostaje doméstico</h3>
+                <img src="img/compostaje.jpg" alt="Compostaje">
+                <p>Transforma tus residuos orgánicos en abono para plantas. Puedes hacerlo incluso en espacios pequeños con técnicas adecuadas.</p>
+                <button class="ver-mas" data-target="mas3">Ver más consejos</button>
+                <div id="mas3" class="consejos-adicionales" style="display: none;">
+                    <ul>
+                        <li>Comienza con una compostera pequeña en tu balcón</li>
+                        <li>Agrega cáscaras de frutas, verduras, huevos y café</li>
+                        <li>Evita carnes, lácteos y alimentos cocinados</li>
+                        <li>Remueve periódicamente para oxigenar</li>
+                        <li>Usa el abono en plantas y huertos urbanos</li>
+                    </ul>
+                    <img src="img/compostaje-extra.jpg" alt="Compostaje extra" style="max-width:100%;margin:10px 0;">
+                    <p>Video tutorial:</p>
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/3RcJ3Oqk5CQ" title="Video de YouTube" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            
+            <div class="practica">
+                <h3>4. Reutilización creativa</h3>
+                <img src="img/reutilizacion.jpg" alt="Reutilización">
+                <p>Antes de tirar algo, piensa cómo podrías darle un nuevo uso. Muchos "residuos" pueden convertirse en recursos valiosos.</p>
+                <button class="ver-mas" data-target="mas4">Ver más consejos</button>
+                <div id="mas4" class="consejos-adicionales" style="display: none;">
+                    <ul>
+                        <li>Transforma frascos en recipientes de almacenamiento</li>
+                        <li>Usa cajas como organizadores</li>
+                        <li>Crea juguetes con materiales reciclados</li>
+                        <li>Haz manualidades con los niños usando residuos limpios</li>
+                        <li>Convierte camisetas viejas en bolsas reutilizables</li>
+                    </ul>
+                    <img src="img/reutilizacion-extra.jpg" alt="Reutilización creativa" style="max-width:100%;margin:10px 0;">
+                    <p>Video de ideas creativas:</p>
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/3RcJ3Oqk5CQ" title="Video de YouTube" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+        
+        <section id="calculadora">
+            <h2>Calculadora de Reducción de Residuos</h2>
+            <p>Ingresa la cantidad aproximada de residuos que generas actualmente (en kg por semana):</p>
+            
+            <div class="form-group">
+                <label for="bolsas">Bolsas plásticas:</label>
+                <input type="number" id="bolsas" step="0.1" min="0">
+            </div>
+            
+            <div class="form-group">
+                <label for="botellas">Botellas y envases:</label>
+                <input type="number" id="botellas" step="0.1" min="0">
+            </div>
+            
+            <div class="form-group">
+                <label for="papel">Papel y cartón:</label>
+                <input type="number" id="papel" step="0.1" min="0">
+            </div>
+            
+            <div class="form-group">
+                <label for="organico">Residuos orgánicos:</label>
+                <input type="number" id="organico" step="0.1" min="0">
+            </div>
+            
+            <button id="calcularResiduos">Calcular potencial de reducción</button>
+            
+            <div id="resultado"></div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>EcoHogar &copy; 2023 - Todos los derechos reservados</p>
+            <p>Contacto: info@ecohogar.com</p>
+            <div class="social">
+                <a href="#"><img src="img/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="img/twitter.png" alt="Twitter"></a>
+                <a href="#"><img src="img/instagram.png" alt="Instagram"></a>
+            </div>
+            <div id="logout-container" style="margin-top:10px;"></div>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+    <script>
+    // Mostrar/ocultar contenido extra en 'Leer más' de buenas prácticas
+    document.querySelectorAll('.ver-mas').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-target');
+            const targetElement = document.getElementById(targetId);
+            if (targetElement.style.display === 'none' || targetElement.style.display === '') {
+                targetElement.style.display = 'block';
+                this.textContent = 'Ver menos';
+            } else {
+                targetElement.style.display = 'none';
+                this.textContent = 'Ver más consejos';
+            }
+        });
+    });
+    </script>
+    <script>
+    (function(){
+        const usuario = (function(){
+            try { return JSON.parse(localStorage.getItem('currentUser')); } catch(e){ return null; }
+        })();
+        if(usuario && usuario.email){
+            const logoutDiv = document.getElementById('logout-container');
+            if (logoutDiv) {
+                logoutDiv.innerHTML = `<span style='margin-right:10px;'>Sesión iniciada como <b>${usuario.nombre || usuario.email.split('@')[0]}</b></span><button id='logout-btn' style='background:#e8491d;color:white;border:none;padding:6px 14px;border-radius:4px;cursor:pointer;'>Cerrar sesión</button>`;
+                document.getElementById('logout-btn').onclick = function(){
+                    localStorage.removeItem('currentUser');
+                    window.location.reload();
+                };
+            }
+        }
+    })();
+    </script>
+</body>
+</html>

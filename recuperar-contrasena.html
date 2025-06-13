@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Contraseña - EcoHogar</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .recovery-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 30px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(46, 139, 87, 0.15);
+        }
+
+        .recovery-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .recovery-header h2 {
+            color: #2e8b57;
+            margin-bottom: 10px;
+        }
+
+        .recovery-header p {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #2e8b57;
+            box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.1);
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .success-message {
+            color: #28a745;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+            padding: 10px;
+            background-color: #d4edda;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .btn-recovery {
+            width: 100%;
+            padding: 12px;
+            background: #2e8b57;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-recovery:hover {
+            background: #1a5738;
+            transform: translateY(-2px);
+        }
+
+        .btn-recovery:active {
+            transform: translateY(0);
+        }
+
+        .loading {
+            position: relative;
+            pointer-events: none;
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 50%;
+            left: 50%;
+            margin: -10px 0 0 -10px;
+            border: 3px solid #ffffff;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span class="highlight">Eco</span>Hogar</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="registro.html">Registro</a></li>
+                    <li><a href="login.html">Iniciar Sesión</a></li>
+                    <li><a href="articulos.html">Artículos</a></li>
+                    <li><a href="videos.html">Videos</a></li>
+                    <li><a href="foros.html">Foros</a></li>
+                    <li><a href="descargas.html">Descargas</a></li>
+                    <li><a href="buenas-practicas.html">Buenas Prácticas</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="recovery-container">
+            <div class="recovery-header">
+                <h2>Recuperar Contraseña</h2>
+                <p>Ingresa tu correo electrónico para recuperar tu contraseña</p>
+            </div>
+            
+            <form id="recoveryForm" novalidate>
+                <div class="form-group">
+                    <input type="email" 
+                           id="email" 
+                           name="email" 
+                           class="form-control" 
+                           required 
+                           placeholder="ejemplo@email.com"
+                           autocomplete="email">
+                    <div class="error-message" id="emailError"></div>
+                </div>
+                
+                <div class="success-message" id="successMessage"></div>
+                
+                <button type="submit" class="btn-recovery">
+                    <span>Enviar instrucciones</span>
+                </button>
+            </form>
+
+            <div class="login-options" style="text-align: center; margin-top: 20px;">
+                <p>¿Recordaste tu contraseña? <a href="login.html">Volver al inicio de sesión</a></p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>EcoHogar &copy; 2023 - Todos los derechos reservados</p>
+            <p>Contacto: info@ecohogar.com</p>
+            <div class="social">
+                <a href="#"><img src="img/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="img/twitter.png" alt="Twitter"></a>
+                <a href="#"><img src="img/instagram.png" alt="Instagram"></a>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <script src="recuperar-contrasena.js"></script>
+</body>
+</html> 

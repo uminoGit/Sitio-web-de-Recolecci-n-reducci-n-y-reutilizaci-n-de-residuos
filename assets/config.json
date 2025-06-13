@@ -1,0 +1,24 @@
+{
+    "imageOptimization": {
+        "formats": {
+            "thumbnail": {
+                "width": 300,
+                "height": 200,
+                "quality": 80
+            },
+            "medium": {
+                "width": 800,
+                "height": 600,
+                "quality": 85
+            },
+            "large": {
+                "width": 1200,
+                "height": 900,
+                "quality": 90
+            }
+        },
+        "webpSupport": true,
+        "lazyLoading": true,
+        "compressionLevel": "balanced"
+    }
+} 

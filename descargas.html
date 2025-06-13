@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descargas - EcoHogar</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .downloads-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .downloads-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .download-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .download-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .download-card h3 {
+            color: #2e8b57;
+            margin-bottom: 10px;
+        }
+
+        .download-card p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+        }
+
+        .download-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 0.85em;
+            color: #888;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: #2e8b57;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: #1a5738;
+        }
+
+        .file-type {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            margin-right: 10px;
+        }
+
+        .file-type.pdf {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        .file-type.doc {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .file-type.zip {
+            background: #fff3e0;
+            color: #ef6c00;
+        }
+
+        .category-filter {
+            margin-bottom: 20px;
+        }
+
+        .category-filter select {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-left: 10px;
+        }
+
+        .search-bar {
+            margin-bottom: 20px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span class="highlight">Eco</span>Hogar</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="registro.html">Registro</a></li>
+                    <li><a href="login.html">Iniciar Sesión</a></li>
+                    <li><a href="articulos.html">Artículos</a></li>
+                    <li><a href="videos.html">Videos</a></li>
+                    <li><a href="foros.html">Foros</a></li>
+                    <li class="current"><a href="descargas.html">Descargas</a></li>
+                    <li><a href="buenas-practicas.html">Buenas Prácticas</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="downloads-container">
+        <h2>Recursos Descargables</h2>
+        <p>Descarga guías, manuales y recursos útiles para la gestión de residuos en tu hogar.</p>
+
+        <div class="search-bar">
+            <label for="searchDownloads">Buscar recursos:</label>
+            <input type="text" id="searchDownloads" placeholder="Escribe para buscar...">
+        </div>
+
+        <div class="category-filter">
+            <label for="categoryFilter">Filtrar por categoría:</label>
+            <select id="categoryFilter">
+                <option value="all">Todas las categorías</option>
+                <option value="guides">Guías y Manuales</option>
+                <option value="templates">Plantillas</option>
+                <option value="infographics">Infografías</option>
+                <option value="tools">Herramientas</option>
+            </select>
+        </div>
+
+        <div class="downloads-grid" id="downloadsGrid">
+            <!-- Los elementos se cargarán dinámicamente con JavaScript -->
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 EcoHogar. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="descargas.js"></script>
+</body>
+</html> 
