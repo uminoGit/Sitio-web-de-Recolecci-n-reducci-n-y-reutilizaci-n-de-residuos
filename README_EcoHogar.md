@@ -2,13 +2,7 @@
 
 Plataforma web educativa enfocada en la gestión responsable de residuos domésticos. Ofrece artículos, videos, foros, recursos descargables, buenas prácticas y una calculadora de reducción de residuos.
 
-> 🌐 [Ver sitio en vivo](#) ← *(agrega tu link de GitHub Pages aquí)*
-
----
-
-## 🖼️ Screenshots
-
-![Home](screenshots/home.png)
+> 🌐 [Ver sitio en vivo](https://uminogit.github.io/Sitio-web-de-Recolecci-n-reducci-n-y-reutilizaci-n-de-residuos/)
 
 ---
 
